@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="com.techdhoom.socialstudent">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.techdhoom.socialstudent.model.StudentContact</class>
+    <class>com.techdhoom.socialstudent.model.Feedcomment</class>
+    <class>com.techdhoom.socialstudent.model.Feedlike</class>
+    <class>com.techdhoom.socialstudent.model.Feedunlike</class>
+    <!--    <class>com.techdhoom.socialstudent.model.Groupmaster</class>-->
+    <class>com.techdhoom.socialstudent.model.Feed</class>
+    <class>com.techdhoom.socialstudent.model.Friendmanagement</class>
+    <class>com.techdhoom.socialstudent.model.Eventmaster</class>
+    <class>com.techdhoom.socialstudent.model.Usermain</class>
+    <class>com.techdhoom.socialstudent.model.Student</class>
+    <class>com.techdhoom.socialstudent.model.Groups</class>
+    <class>com.techdhoom.socialstudent.model.Users</class>
+    <class>com.techdhoom.socialstudent.model.Group1</class>
+    <class>com.techdhoom.socialstudent.model.Status</class>
+    <properties>
+      <property name="hibernate.connection.username" value="postgres"/>
+      <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+      <property name="hibernate.connection.password" value="manan"/>
+      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/socialstudent"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.archive.autodetection" value="class"/>
+      <!--
+-->
+      <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+      <!--
+-->
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.archive.autodetection" value="class"/>
+      <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
+  </persistence-unit>
+</persistence>

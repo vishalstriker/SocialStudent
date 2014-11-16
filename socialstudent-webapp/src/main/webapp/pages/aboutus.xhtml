@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>       
+        <ui:composition template="./layout/homeLayout.xhtml">
+            <ui:define name="content">
+                <div id="left">
+                    <ul id="subnav">
+                        <li class="active">Philosophy</li>
+                        <a href="/founder"><li>Founder &amp; Creator</li></a>                             
+                    </ul>
+                    <div class="contact-bg">
+                        <h4>Questions?</h4>
+                        <h5>Just call and talk to us:</h5>
+                        (510) 668-0701<br/>                   
+                        <br/>
+                        <a href="/contact">
+                            <div id="emailus">&#160;</div>
+                        </a>                    
+                    </div>
+                </div>
+                <div id="right">
+                    <h3 >About Us</h3>
+                    <div class="breadcrumbs"> <a href="/login">HOME</a>  |  PHILOSOPHY</div>
+                    <div><img src="#{facesContext.externalContext.requestContextPath}/images/philosophy-banner.jpg"/></div>
+                    <div class="content">
+                        <h6>MISSION </h6>
+                        <div align="center"><img src="#{facesContext.externalContext.requestContextPath}/images/mission-statement.png" />
+                        </div>
+                        <h6>OUR PHILOSOPHY</h6>
+                        <p>Our philosophy of obtaining and keeping your healthy dream body starts with balancing three very basic and essential elements, water, oxygen and nutrition. This foundation combined with our well balanced exercise program will help you meet your goals quickly and effectively. </p>
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                    <td width="48%" style="border-right:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1; padding-right:10px; padding-bottom:10px;"><span class="hilite">Water - </span>Aside from aiding in digestion and absorption of food, water regulates body temperature and blood circulation, carries nutrients and oxygen to cells, and removes toxins and other wastes.  Water, when taken in sufficient quantities, also cushions joints and protects tissues and organs. </td>
+                                    <td width="52%" style="border-bottom:1px solid #e1e1e1; padding-left:10px; padding-bottom:10px;"><span class="hilite">Oxygen - </span>Similar to food, oxygen is fuel for your body. Learning to breathe properly will cause you to take in extra oxygen. This will cause chemical reactions in your body. Increased breathing will cause you to increase your calorie burn and in turn will speed up your metabolism.  </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right:1px solid #e1e1e1;padding-right:10px;  padding-bottom:10px; padding-top:10px;"><span class="hilite">Nutrition -</span> Everything you eat has an influence on your body.  A good balance of quality carbohydrates, healthy fats, and lean proteins promotes physical strength, mental alertness and will ultimately impact weight loss when needed and help build muscle. An abundance of fiber coupled with a variety of green vegetables makes up a balanced diet. Some basic Nutrition tips - Avoid large portions, eating direct sugar and fats, processed foods, eating after 7pm and excessive snacking in between meals.  </td>
+                                    <td style="padding-left:10px;  padding-bottom:10px; padding-top:10px;"><span class="hilite">Exercise -</span> The right exercise is key to utilizing and maximizing the
+                                        benefits of Water, Oxygen, and nutrition.  Exercise increases and improves your health, vitality and mental well-being.  Cardiovascular exercise strengthens the heart, resulting in more blood and oxygen flow throughout the body.  Strength training increases muscle and bone density as well as stability.  The right balance of exercise increases your endurance, strength, and flexibility thereby improving your shape and helping you meet your health goals.</td>
+                                </tr>
+                            </tbody></table>
+                        <p>At Perfect Balance, we believe the human body is the perfect machine. After all, what other machine can you neglect and mistreat for 80 years and still have a functional piece of equipment? Even more amazing is the fact that, after years and years of abuse, a simple few weeks or months of proper eating and activity can result in tremendous reversal of much of the effects of that abuse. What’s more, these positive results cross all age barriers. Young and old can and do benefit from the Perfect Balance lifestyle. With balanced nutrition, exercise, and healthy lifestyle choices, you, too, can achieve and maintain the body and vitality you are looking for!  </p><p>What’s behind the results? Balance! Everything we do is designed to balance your hormones. Why? The truth of the matter is that no one can tell you what causes many of the so-called age related disorders. But, we do know there is a strong correlation between hormonal imbalance and diseases like diabetes, cancer, high blood pressure, heart disease, forgetfulness and low energy. </p>
+                        <p> It is our mission and calling to help you achieve your health, weight loss and fitness goals.  Our meal plans and workouts are specifically designed to stimulate and balance your hormones to aid you in reaching these goals quickly and efficiently.  Proper eating in conjunction with our innovative fitness program is the best recipe for success!!!. In addition, we feel fitness should be fun! Our members quickly find themselves loving working out and in the best shape of their lives!</p>
+                        <!--content ends here --> 
+                    </div>
+
+                    <!--right div ends here --> 
+                </div>
+                <script type="text/javascript">
+                    document.getElementById("aboutus").setAttribute("class", "active")
+                </script>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

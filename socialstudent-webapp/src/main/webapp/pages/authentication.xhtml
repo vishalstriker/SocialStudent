@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:a4j="http://richfaces.org/a4j">
+    <h:body>
+        <f:metadata>
+            <f:event listener="#{loginServiceBean.checkCookie()}" type="preRenderView"/>
+        </f:metadata>
+        <ui:composition template="./layout/homeLayout.xhtml">
+            <ui:define name="content">
+                <script type="text/javascript">
+                  function checkKey(e) {
+                      var unicode=e.keyCode? e.keyCode : e.charCode;
+                      if (unicode == 27) {
+                          disablePopup();
+                      }
+                  }
+                </script>
+                <f:loadBundle var="msg" basename="ValidationMessages"/>
+                <h:form prependId="false" id="loginForm">
+                    <div class="popupContact" style=" width:590px; " id="content">
+
+                        <div class="login-header">
+                            Social Student Login -#{messageDataBean.isSuccess}-
+                            <div class="popupContactClose"></div>
+                        </div>
+                              <a4j:outputPanel id="dataMessage">
+        <h:outputLabel rendered="#{messageDataBean.isSuccess and messageDataBean.message != null}" >
+            <div class="ui-widget">
+                <div class="ui-state-highlight ui-corner-all" style="margin-top: 10px; margin-bottom:10px; padding: 0 .7em; font-weight:bold; line-height:16px; "> 
+                    <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                       #{messageDataBean.message}
+                    </p>
+                </div>
+            </div>                       
+        </h:outputLabel>
+        <h:outputLabel rendered="#{not messageDataBean.isSuccess and messageDataBean.message != null}">
+            <div class="ui-widget">
+                <div class="ui-state-error ui-corner-all" style="padding:0px 5px; margin-bottom:10px; font-weight:bold; line-height:16px; "> 
+                    <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+                       <h:outputText value="#{messageDataBean.message}" escape="false"/></p><div class="clearing"></div>
+                </div>                
+            </div>
+        </h:outputLabel>
+    </a4j:outputPanel>   
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="form-table" style="margin:15px 0px;">
+                            <tr>
+                                <td colspan="2"><strong>Login with your SS Account</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h:inputHidden id="errorMsg" /><h:message id="errorMsgSpan" for="errorMsg" style="color:red;font-size: 13px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="31%">Username </th>
+                                <td><h:inputText id="j_username" required="true" requiredMessage="Enter username" autocomplete="off"  value="#{loginDataBean.userId}" styleClass="medium"  maxlength="30" onkeyup="convertToLowerCase(this.id,event);" onchange="convertToLowerCase(this.id,event);" onkeypress="var keycode; if (window.event) {keycode = window.event.keyCode;}else {return true;} if (keycode == 13) {document.getElementById('sin').click();}else {return true;}">
+                                        <f:ajax event="blur" render="usernameMsg" />
+                                        
+                                    </h:inputText>
+                                    <h:message style="color: red;font-size: 13px;" for="j_username" id="usernameMsg" />                                               
+                                </td>                                       
+                            </tr>
+                            <tr>
+                                <th>Password </th>
+                                <td><h:inputSecret id="j_password" required="true" requiredMessage="Enter password" value="#{loginDataBean.password}" autocomplete="off" styleClass="medium" maxlength="50" redisplay="true" onkeypress="var keycode; if (window.event) {keycode = window.event.keyCode;}else {return true;} if (keycode == 13) {document.getElementById('sin').click();}else {return true;}">
+                                        <f:ajax event="blur" render="pwdMsg" />
+                                    </h:inputSecret>
+                                    <h:message style="color: red;font-size: 13px;" for="j_password" id="pwdMsg" /> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  </td>
+                                <td class="smalltxt">
+                                    <h:selectBooleanCheckbox style="text-align:right; " id="_spring_security_remember_me" value="#{loginDataBean.rememberMe}" />&#160;<label for="_spring_security_remember_me"><h:outputText value="Remember Me" /></label> |
+                                    <h:outputLink  value="#{facesContext.externalContext.requestContextPath}/forgotPassword" title="Reset Password">Forgot Password?</h:outputLink>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td class="smalltxt">
+                                    <h:commandButton type="submit" styleClass="letsgo-btn" id="sin" action="#{loginServiceBean.doLogin}" style="float: right;" >
+                                        <f:setPropertyActionListener target="#{usermainServicebean.userName}" value="#{loginDataBean.userId}"/>
+                                    </h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="backgroundPopup"></div>
+                </h:form>
+                <h:form>
+                    <div class="flash-banner" id="flashContentDiv">
+                        <script type="text/javascript">
+                            AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','970','height','445','title','pbalance','src','pbalance-slide-show_v6','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','wmode','transparent','movie','#{facesContext.externalContext.requestContextPath}/images/pbalance-slide-show_v6' ); //end AC code
+                        </script>
+                        <noscript>
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="970" height="445" title="pbalance">
+                                <param name="movie" value="pbalance-slide-show_v6.swf" />
+                                <param name="quality" value="high" />
+                                <param name="wmode" value="transparent" />
+                                <embed src="#{facesContext.externalContext.requestContextPath}/images/pbalance-slide-show_v6.swf" width="970" height="415" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" wmode="transparent"></embed>
+                            </object>
+                        </noscript>                    
+                    </div>
+                    <div class="flash-banner" id="flashDiv" style="display:none;">
+                        <img src="#{facesContext.externalContext.requestContextPath}/images/alternate-image-flash.jpg" />
+                    </div>  
+                    <hr style="margin-bottom:15px;"/>                    
+                    <script type="text/javascript">
+                    
+                   loadPopup();
+                    document.getElementById('j_username').focus();                    
+                    jQuery("#textSWeight").numeric();
+                    jQuery("#textCWeight").numeric();                   
+                    function navigateToRegistration() {
+                        location.href='#{facesContext.externalContext.requestContextPath}/registration'
+                    }
+                    //CONTROLLING EVENTS IN jQuery
+                    $(document).ready(function(){                                                                                                
+                        //CLOSING POPUP
+                        //Click the x event!
+                        $(".popupContactClose").click(function(){
+                            disablePopup();  
+//                                location.href='{facesContext.externalContext.requestContextPath}/login'
+                        });
+                        $(".popupContactClosebutton").click(function(){
+                            disablePopup();
+//                                location.href='{facesContext.externalContext.requestContextPath}/login'
+                        });     
+                    });
+                    if(swfobject.hasFlashPlayerVersion("1")) {
+                        document.getElementById('flashContentDiv').style.display='block';
+                        document.getElementById('flashDiv').style.display='none';
+                    }
+                    else {
+                        document.getElementById('flashDiv').style.display='block';
+                        document.getElementById('flashContentDiv').style.display='none';
+
+                    }
+                    </script>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>       
+</html>
+

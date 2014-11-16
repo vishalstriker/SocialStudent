@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />          
+        <link rel="PBalance icon" href="#{facesContext.externalContext.requestContextPath}/images/favicon.ico"/>
+        <title>Perfect Balance - a balanced recipe for success</title>
+    </h:head>
+    <h:body>
+        <f:loadBundle var="msg" basename="ValidationMessages"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/pbalance.css" rel="stylesheet" type="text/css" />
+        <link href="#{facesContext.externalContext.requestContextPath}/css/general.css" rel="stylesheet" type="text/css" />        
+        <link type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/chosen.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/jquery.loadmask.css" />                
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/jquery.ui.theme.css" />
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/jquery.ui.tabs.css" />
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/ui.multiselect.css" />
+        <link href="#{facesContext.externalContext.requestContextPath}/css/rich_style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" type="text/javascript">
+            var hostName = document.location.hostname;
+            if(hostName.indexOf('www') == -1) 
+            {
+                if(hostName == 'pbalance.com') {
+                    document.location.hostname = "www." + hostName;
+                } 
+            }
+        </script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/common/pbalance.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-1.6.2.min.js" type="text/javascript"></script>        
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.core.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.tabs.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.widget.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.alphanumeric.js" type="text/javascript"></script>        
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.datepicker.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.loadmask.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.youtubepopup.min.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/AC_RunActiveContent.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/chosen.jquery.min.js" type="text/javascript"></script>        
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.swfobject.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.jwplayer.min.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/popup.js" type="text/javascript"></script>     
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/swfobject.js" type="text/javascript"></script>       
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/ui.multiselect.js" type="text/javascript"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.hint.js" type="text/javascript"></script>
+        <div id="main-wrapper">           
+            <ui:insert name="header">
+                <ui:include src="../common/header.xhtml"/>
+            </ui:insert>
+            <div id="left" style="margin-top: 10px;">
+                 <ui:insert name="leftMenu">
+                    <ui:include src="../admin/leftMenu.xhtml"/>
+                </ui:insert>
+            </div>
+            <div id="right">
+                <ui:insert name="content">
+                </ui:insert> 
+            </div>
+        </div> 
+        <div class="clearing">
+        </div>
+        <div id="footer">    
+            <ui:insert name="footer">
+                <ui:include src="../common/footer.xhtml"/>
+            </ui:insert>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $("a.youtube").YouTubePopup({ autoplay: 0 });
+            });
+        </script>
+    </h:body>
+</html>

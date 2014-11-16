@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+    <head>
+        <title>members</title>
+
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-1.8.2.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-ui-1.9.0.custom.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.core.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.widget.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.autocomplete.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/common/pbalance.js" type="text/javascript"></script>
+    <f:event listener="#{usermainServicebean.retriveAllUsermain()}" type="preRenderView"/>
+
+    <style>
+        .loader {
+            background: #FEF7CB;
+            border: 1px solid #FFE475;
+            border-top: 0;
+            font-weight: bold;
+            display: none;
+            left: 50%;
+            line-height: 24px;
+            margin-left: -75px;
+            padding: 0 10px;
+            position: fixed;
+            text-align: center;
+            width: 150px;
+            z-index: 50;
+            top: 0;
+            border-radius: 0 0 5px 5px;
+            -moz-border-radius: 0 0 5px 5px;
+            -webkit-border-radius: 0 0 5px 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        var str =new Array();
+                    
+    </script>
+
+    <ui:repeat value="#{usermainServicebean.usermainDatabeanlist}" var="a">
+        <script type="text/javascript">        
+                str.push("#{a.username}");
+        </script>
+    </ui:repeat>
+    <script type="text/javascript">
+        
+    $(document).ready(function(){
+            $("#id1").autocomplete({
+                source:str
+            }); 
+        });
+    
+    
+    </script>
+    <!--         <script type="text/javascript">
+               $(document).ready(function(){  
+             $("#textarea1").focus(function()
+    {
+    $(this).animate({"height": "85px"}, "fast" );
+    $("#button_block").slideDown("fast");
+    return false;
+    });
+    $("#btn2").click(function()
+    {
+    $("#content").animate({"height": "30px"}, "fast" );
+    $("#button_block").slideUp("fast");
+    return false;
+    });
+               });
+                </script>-->
+
+</head>
+<h:body>
+    <ui:composition template="./layout/homeLayout.xhtml">
+        <ui:define name="content">
+            <div class="loader" style="display: none;"><span>Loading</span></div>
+            <div id="left" style="margin-top: 10px;">
+                <h:form>
+                    <div class="profile">
+                        <h:panelGrid id="profileImagePanel" style="width: 100%">
+                            <h:commandLink action="pretty:uploadAdminProfilePicture" title="click to edit picture" style="cursor:pointer;text-align: center;">
+                                <a4j:mediaOutput element="img" cacheable="false" style="border:none;height: 95px;width:95px"
+                                                 createContent="#{systemResultSessionUtil.drawImage}" 
+                                                 value="#{usermainServicebean.imagePath}"
+                                                 mimeType="image/jpeg" />
+                            </h:commandLink>
+                        </h:panelGrid>
+                    </div>  
+                    <h:outputLabel>
+                        <h:dataTable value="#{usermainServicebean.retriveUsermainByEmailId()}" var="loginuser">
+                            <h:column>
+                                <h:commandLink action="admin.jsf">Hello! #{loginuser.username}
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>      
+                    </h:outputLabel>
+                    <ul id="subnav" style="margin:10px 10px 0px 0px">                
+                        <h:commandLink >
+                            <li id="manageRoster">PBS Roster</li>
+                        </h:commandLink>
+                        <h:commandLink action="jugal1.xhtml" >
+                            <li id="manageRoster">Create Group</li>
+                        </h:commandLink>
+                        <h:commandLink action="Event.xhtml" >
+                            <li id="manageRoster">Create Event</li>
+                        </h:commandLink>
+                        <h:commandLink action="ShowEvents.xhtml" >
+                            <li id="manageRoster">Show Event</li>
+                        </h:commandLink>
+                        <h:commandLink action="ShowEvents.xhtml" >
+                            <li id="manageRoster">Show Event</li>
+                        </h:commandLink>
+                        <h:commandLink action="SeeAllFriends.xhtml" >
+                            <li id="manageRoster">See All Friends</li>
+                        </h:commandLink>
+                    </ul>
+                </h:form>
+            </div>
+            <div id="right" style="height:450px">
+                <div style="float:left;width:69%;border-left:solid 1px red;margin:0px;min-height: 100%" >
+                    <h:form prependId="false">
+                        <f:event listener="#{usermainServicebean.retriveStatusByEmailId()}" type="preRenderView"  />
+                        <table>
+                            <tr>
+                                <td>
+                            <h:inputTextarea id="textarea1" value="#{statusDataBean.yourstatus}" label="whats in your mind" rows="3" cols="50" style="margin: 10px" />
+                            </td>
+                            <td>
+                            <a4j:commandButton action="#{statusServiceBean.statusCreate()}" value="Post" styleClass="standard-button" />
+                            </td>
+                            </tr>
+                        </table>
+                        <h:dataTable   value="#{usermainServicebean.statusDataBeanList}" var="user1">
+                            <h:column>
+                                YOUR Status     :->  <h:outputText value="#{user1.yourstatus}" />
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+                <div style="float:right;width:30%;border-left:solid 1px red;margin:0px;min-height: 100%" >
+                    <h:form>
+                        <div>
+                            <table style="font-size: 10pt">
+                                <tr>
+                                    <td>
+                                        Search : <h:inputText id="id1"  />
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                <rich:dataTable id="group" value="#{usermainServicebean.retriveGroupByUsermainEmailId()}" var="user1" rows="2" rowKeyVar="rowCnt" styleClass="meal-plan" style="width: 100%" rowClass="#{rowCnt%2 == 0 ? 'alt-row1':'alt-row'}">
+                                    <f:facet name="header">
+                                        <rich:columnGroup>
+                                            <rich:column styleClass="header">
+                                                <h:outputText value="Group Name"/>
+                                            </rich:column>
+                                        </rich:columnGroup>
+                                    </f:facet>
+                                    <rich:column>
+                                                <a4j:commandLink value="#{user1.groupname}"  action="#{groupServiceBean.retriveUserByGroupId()}" render="users" onbegin="loadWaitPanel('right');" oncomplete="stopWaitPanel('right')">
+                                            <a4j:param assignTo="#{groupServiceBean.groupId}" value="#{user1.groupId}"/>
+                                        </a4j:commandLink>
+                                    </rich:column>
+                                    <f:facet name="footer" >
+                                        <div align="center" style="width: 100%;">
+                                            <rich:dataScroller for="group" renderIfSinglePage="true" maxPages="2" fastStep="2"></rich:dataScroller>
+                                        </div>
+                                    </f:facet>
+                                </rich:dataTable>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                <a4j:outputPanel id="users">
+                                    <rich:dataTable id="user" value="#{groupServiceBean.usermainList}" var="user"  rowKeyVar="rowCnt" styleClass="meal-plan" style="width: 100%;" rowClass="#{rowCnt%2 == 0 ? 'alt-row1':'alt-row'}">
+                                        <f:facet name="header">
+                                            <rich:columnGroup>
+                                                <rich:column styleClass="header" colspan="3">
+                                                    <h:outputText value="Group Members"/>
+                                                </rich:column>
+                                            </rich:columnGroup>
+                                        </f:facet>
+                                        <rich:column style="width: 40px">
+                                           
+                                              <a4j:mediaOutput element="img" cacheable="false" style="border:none;height: 40px;width:40px"
+                                                 createContent="#{systemResultSessionUtil.drawImage}" 
+                                                 value="#{user.profilepicture}"
+                                                 mimeType="image/jpeg" />
+                                        </rich:column>
+                                        <rich:column >
+                                            #{user.username}
+                                        </rich:column>
+                                         <rich:column>
+                                           #{user.emailId}
+                                        </rich:column>
+                                        <f:facet name="footer" >
+                                            <div align="center" style="width: 100%;">
+                                                <rich:dataScroller for="user" renderIfSinglePage="true" maxPages="10" fastStep="5"></rich:dataScroller>
+                                            </div>
+                                        </f:facet>
+                                    </rich:dataTable>
+                                </a4j:outputPanel>
+                                </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </h:form>
+                </div>
+            </div> 
+            <div class="clearing">
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

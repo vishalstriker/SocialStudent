@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <ui:composition template="./layout/homeLayout.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <div style="margin-top:30px; font-size:14px; line-height:22px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="2">
+                                    <ui:include src="common/message.xhtml" />                                                                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="26%" valign="top"><img src="#{facesContext.externalContext.requestContextPath}/images/pbalance-logo.jpg" width="222" height="304"/></td>
+                                <td width="74%" valign="top"><br/>
+                                    <h3 >Thank You</h3>
+                                    <h:outputLabel rendered="#{flash.messageDataBean.pageId != null and flash.messageDataBean.pageId == 'register'}">
+                                        <p>
+                                            for registering. We have sent you an email with your username and password for your records. You can now login and access all the videos, recipies and meal plans.
+                                        </p>
+                                    </h:outputLabel>
+                                    <h:outputLabel rendered="#{flash.messageDataBean.pageId == null or flash.messageDataBean.pageId == ''}">
+                                    <p>
+                                        for contacting us. We will get back to you very soon.
+                                        Meanwhile keep exploring our website.</p>
+                                    </h:outputLabel>
+                                    <p><strong>You may also want to...</strong></p>
+                                    <ul style="list-style:square;" >
+                                        <li>
+                                            <h:commandLink value="Check out our training videos." action="#{menuServiceBean.loginNavigate}">
+                                                <f:param name="id" value="viewVideos"/>                                   
+                                            </h:commandLink>  
+                                        </li>
+                                        <li>
+                                            <h:commandLink value="See what people feel about Perfect Balance." action="#{menuServiceBean.menuNavigate}">                                    
+                                                <f:param name="id" value="results"/>                                   
+                                            </h:commandLink>                                           
+                                        </li>
+                                        <li>
+                                            <h:commandLink value="See some good meal Plans." action="#{menuServiceBean.loginNavigate}">                                    
+                                                <f:param name="id" value="pbalancemealplan"/>                                   
+                                            </h:commandLink>                                           
+                                        </li>
+                                        <!--                                        <li>
+                                                                                    <a href="pbalance-mealplan.html">See some good meal Plans.</a></li>
+                                                                                <li><a href="#">Try some of our new healthy recipe  now.</a> </li>-->
+                                    </ul>
+                                    <p style="margin-left:40px; font-size:16px;"><em><strong>Or...</strong></em></p> 
+                                    <ul style="list-style:square;"><li><a href="/login">Click here to visit homepage.</a> </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/><br/>
+                        <br/><br/>
+                        <br/><br/>
+                    </div>
+                    <script type="text/javascript">                                   
+                        document.getElementById("aboutus").setAttribute("class", "");      
+                        document.getElementById("trainingstudio").setAttribute("class", "");      
+                        document.getElementById("pbalancediet").setAttribute("class", "");      
+                        document.getElementById("videos").setAttribute("class", "");      
+                        document.getElementById("testimonials").setAttribute("class", "");      
+                        document.getElementById("contact").setAttribute("class", "");
+                    </script>
+                </h:form>
+            </ui:define>
+        </ui:composition> 
+    </h:body>
+</html>

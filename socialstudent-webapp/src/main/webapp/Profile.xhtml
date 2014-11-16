@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>View Profile</title>
+    </head>
+    <body>
+        <h:form>
+            <f:event listener="#{editProfileServiceBean.retriveAllProfileData()}" type="preRenderView"/>
+        <div>
+            <table cellspacing="50">
+                <tr>
+                    <td>
+                        <h:outputText value="General" style="font-size: 16px;color: #000"></h:outputText>
+                    </td>
+                    <td>
+                            <h:link outcome="Demo.xhtml">Edit
+                            </h:link>
+                        </td>
+                    <h:dataTable value="#{editProfileServiceBean.editProfileDataBeanList}" var="profiledata">
+                        <h:column>
+                            <tr>
+                                <td>
+                                    address:<h:outputText value="#{profiledata.adress}" style="width: 500px;border-color: #000"></h:outputText></td>
+                                <td>
+                                    state:<h:outputText value="#{profiledata.state}" style="width: 500px;border-color: #000"></h:outputText> postal code:<h:outputText value="#{profiledata.pinCode}" style="width: 500px;border-color: #000"></h:outputText>
+                                </td>
+                                <td>
+                                    RelationShip Status:<h:outputText value="#{profiledata.relationshipStatus}" style="width: 500px;border-color: #000"></h:outputText></td>
+                                <td>
+                                    DateofBirth:<h:outputText value="#{profiledata.dateofbirth}" style="width: 500px;border-color: #000"></h:outputText></td>
+                                <td>
+                                    gender:<h:outputText value="#{profiledata.gender}" style="width: 500px;border-color: #000"></h:outputText></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobileno:<h:outputText value="#{profiledata.mobileNo}" style="width: 500px;border-color: #000"></h:outputText>
+                                </td>
+                                <td>
+                                    Workno:<h:outputText value="#{profiledata.homeNo}" style="width: 500px;border-color: #000"></h:outputText>
+                                </td>
+                                </tr>
+                        </h:column>
+                    </h:dataTable>
+                </tr>
+            </table>
+        </div>
+            <div>
+                <table cellspacing="50">
+                <tr>
+                    <td>
+                        <h:outputText value="Location" style="font-size: 16px;color: #000"></h:outputText>
+                    </td>
+                    <td>
+                            <h:link outcome="Demo.xhtml">Edit
+                            </h:link>
+                        </td>
+                </tr>
+            </table>
+            </div>
+            <div>
+                <table cellspacing="40">
+                <tr>
+                    <td>
+                        <h:outputText value="Professional" style="font-size: 16px;color: #000"></h:outputText>
+                    </td>
+                    <td>
+                            <h:link outcome="Demo.xhtml">Edit
+                            </h:link>
+                        </td>
+                </tr>
+            </table>
+            </div>
+            <div>
+                <table cellspacing="50" cellpadding="0">
+                <tr>
+                    <td>
+                        <h:outputText value="Education" style="font-size: 16px;color: #000"></h:outputText>
+                    </td>
+                    <td>
+                            <h:link outcome="Demo.xhtml">Edit
+                            </h:link>
+                        </td>
+                </tr>
+            </table>
+            </div>
+            <div>
+                <table cellspacing="50">
+                <tr>
+                    <td>
+                        <h:outputText value="Personal" style="font-size: 16px;color: #000"></h:outputText>
+                    </td>
+                    <td>
+                            <h:link outcome="Demo.xhtml">Edit
+                            </h:link>
+                        </td>
+                </tr>
+            </table>
+            </div>
+        </h:form>
+    </body>
+</html>

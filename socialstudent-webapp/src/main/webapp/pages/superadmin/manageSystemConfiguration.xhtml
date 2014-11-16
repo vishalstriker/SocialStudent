@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <body>
+
+        <ui:composition template="./../layout/homeLayout.xhtml">
+            <ui:define name="content">
+                <f:metadata>
+                    <f:event listener="#{systemConfigurationServiceBean.retrieveSystemConfiguration}" type="preRenderView"/>
+                </f:metadata>
+                <h3>System Configuration</h3>
+                <hr class="red"/>
+                <center>
+                    <!-- message page included-->
+                    <div style="width: 75%">
+                        <ui:include src="../common/message.xhtml" /> 
+                    </div>
+
+                    <h:form>
+                        <table style="width: 75%;widows: 50%;border:1px solid #ccc;" class="form-table" border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <th class="header"><h:outputText value="Key" /></th>
+                                <th class="header"><h:outputText value="Value" /></th>
+                                <th class="header"><h:outputText value="Action" /></th>
+                            </thead>
+                            <tr valign="top" >
+                                <td width="52%">
+                                    <h:inputText id="keyid" value="#{systemConfigurationDataBean.systemKey}" required="true" requiredMessage="System key Required">
+                                        <f:ajax event="blur" render="keyidMsg"/>
+                                    </h:inputText>
+                                    <rich:message id="keyidMsg" for="keyid" style="color: red"/>
+                                </td>
+                                <td width="25%">
+                                    <h:inputText id="valueid" value="#{systemConfigurationDataBean.keyValue}" required="true" requiredMessage="Key value Required">
+                                        <f:ajax event="blur" render="messagevalue"/>
+                                    </h:inputText>
+                                    <rich:message id="messagevalue" for="valueid" style="color: red"/>
+                                </td>
+                                <td width="10%"> <h:commandLink action="#{systemConfigurationServiceBean.createSystemConfiguration}" title="Add Key value pair" style="text-align: center">
+                                        <img src="#{facesContext.externalContext.requestContextPath}/images/add-more-btn.jpg"/>
+                                    </h:commandLink>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                    <h:form prependId="false">
+                        <h:outputLabel value="#{msg.NoKeyvaluepairexists} !!!"  style="font-size: x-large;font-weight: bold" rendered="#{empty systemResultViewUtil.systemConfigurationDataBeanList}"/>
+                        <rich:dataTable rowKeyVar="rowId" styleClass="meal-plan" style="width: 75%;" rowClass="#{rowId%2 == 0 ? 'alt-row1':'alt-row'}" id="sysconfigtable" value="#{systemResultViewUtil.systemConfigurationDataBeanList}"  rendered="#{not empty systemResultViewUtil.systemConfigurationDataBeanList}" var="systemconfigBean">
+
+                            <rich:column>
+                                <h:outputText value="#{systemconfigBean.systemKey}" style="text-align: left;padding-right: 120px" />
+                            </rich:column >
+                            <rich:column >
+                                <h:inputText id="keyvalue" value="#{systemconfigBean.keyValue}" style="text-align: left;border: 0;">
+                                </h:inputText>
+                            </rich:column>
+                            <rich:column >
+                                <h:commandLink action="#{systemConfigurationServiceBean.updateSystemConfiguration}"  title="Update Key" style="margin-left: 15%" >
+                                    <img style="width: 50px;height: 30px" src="#{facesContext.externalContext.requestContextPath}/images/submit-btn.png"/>
+                                    <f:setPropertyActionListener target="#{systemResultSessionUtil.key}" value="#{systemconfigBean.systemKey}"/>
+                                    <f:setPropertyActionListener target="#{systemResultSessionUtil.value}" value="#{systemconfigBean.keyValue}"/>
+                                </h:commandLink>
+                                <h:outputLabel value="" />
+                            </rich:column>
+                        </rich:dataTable>
+                    </h:form>
+                </center>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

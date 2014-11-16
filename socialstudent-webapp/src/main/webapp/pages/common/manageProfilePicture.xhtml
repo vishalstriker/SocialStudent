@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+    <ui:composition>
+        <f:metadata>
+            <f:event listener="#{userServiceBean.retrieveAlbumList}" type="preRenderComponent" />
+        </f:metadata>
+        <h:form prependId="false">
+            <a4j:commandButton action="#{userServiceBean.uploadNewProfilePicture}" id="uploadBtn" onbegin="loadWaitPanel('content')" oncomplete="stopWaitPanel('content')" render="profileImagePanel,album,dataMessage" style="display: none"/>
+            <table class="form-table">
+                <tr>
+                    <th valign="top">
+                        Profile Picture
+                    </th>
+                    <td>
+                        <a4j:commandButton id="stopBtn" styleClass="stopBtn" value="Stop" immediate="true"
+                                           render="picComp" oncomplete="document.getElementById('stopBtn').style.display='none'" />
+                        <rich:fileUpload  fileUploadListener="#{fileUploadListener.imageUploadListener}"
+                                          addLabel="Add Picture"
+                                          style="height: 80px; width: 300px"
+                                          acceptedTypes="jpeg,gif,jpg,png,bmp"
+                                          render="@this"
+                                          onuploadcomplete="document.getElementById('uploadBtn').click();document.getElementById('stopBtn').style.display='none'"
+                                          id="picComp"
+                                          onfilesubmit="document.getElementById('stopBtn').style.display=''"
+                                          >
+                        </rich:fileUpload>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <rich:dataGrid var="image" columns="5" value="#{systemResultViewUtil.albumList}" style="border: none;top: 0;" id="album" >
+                <rich:column style="vertical-align: top">
+                    <div class="profile" style="width: 100px; height: 100px; position: relative;">
+                        <a4j:commandButton value="" action="#{userServiceBean.removePictureFromAlbum}" onbegin="loadWaitPanel('content')" oncomplete="stopWaitPanel('content')" render="profileImagePanel,dataMessage,album" style="height: 12px;width: 12px;position: absolute; left :105px;top:-5px; z-index: 1000;" image="#{facesContext.externalContext.requestContextPath}/images/cancelled.png">
+                            <f:setPropertyActionListener value="#{image.path}" target="#{userServiceBean.imagePath}"/>
+                        </a4j:commandButton>
+                        <a4j:commandLink action="#{userServiceBean.changeProfilePicture}" onbegin="loadWaitPanel('content')" oncomplete="stopWaitPanel('content')" render="profileImagePanel,dataMessage">
+                            <a4j:mediaOutput id="pic" style="width: 100px; height: 100px"
+                                             element="img"
+                                             createContent="#{systemResultSessionUtil.drawImage}"
+                                             value="#{image.path}"
+                                             rendered="#{image.path != null}"
+                                             mimeType="image/jpg"
+                                             styleClass="u7"/>
+                            <f:setPropertyActionListener value="#{image.path}" target="#{loginDataBean.profilePicture}" />
+                        </a4j:commandLink>
+                    </div>
+                </rich:column>
+            </rich:dataGrid>
+        </h:form>
+
+        <script type="text/javascript">
+            document.getElementById('stopBtn').style.display='none';
+        </script>
+    </ui:composition>
+</html>
+

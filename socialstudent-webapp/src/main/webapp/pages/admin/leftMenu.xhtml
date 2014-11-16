@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      >
+    <ui:composition>
+        <h:form>
+            <div class="profile">
+                <h:panelGrid id="profileImagePanel" style="width: 100%">
+                    <h:commandLink action="pretty:uploadAdminProfilePicture" title="click to edit picture" style="cursor:pointer;text-align: center;">
+                        <h:panelGroup rendered="#{loginDataBean.profilePicture == null}">
+                            <h:graphicImage url="#{facesContext.externalContext.requestContextPath}/images/defaultuser.jpg" width="95px" height="95px" />
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{loginDataBean.profilePicture != null}">
+                            <a4j:mediaOutput id="profileImage" style="border:none;height: 95px;width:95px"
+                                             element="img"
+                                             createContent="#{systemResultSessionUtil.drawImage}"
+                                             mimeType="image/jpg"
+                                             styleClass="u7"
+                                             value="#{systemPropertyUtil.filePath.concat(loginDataBean.profilePicture)}"/>
+                        </h:panelGroup>
+                    </h:commandLink>
+                </h:panelGrid>
+            </div>            
+            <ul id="subnav" style="margin:10px 0px 0px 0px">                
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageRosterRights}">
+                    <li id="manageRoster">PBS Roster</li>
+                    <f:param name="id" value="manageShift"/>
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveSessionRoster}">
+                    <li id="trainerRoster">Session Roster</li>
+                    <f:param name="id" value="trainerRoster"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageTestimonialRights}">
+                    <li id="manageTestimonial">Testimonials
+                        <h:outputLabel value="(#{userServiceBean.remainingTestimonials})" rendered="#{userServiceBean.remainingTestimonials ne '0' }"/>
+                    </li>
+                    <f:param name="id" value="manageTestimonial"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}"  rendered="#{userRightsDataBean.haveVideoForum}">
+                    <li id="videoForum">Video Forum
+                        <h:outputLabel id="videoForumCounter">
+                            <h:outputText value="(#{videoForumServiceBean.questionCount})" rendered="#{videoForumServiceBean.questionCount ne '0' }"/>
+                        </h:outputLabel>
+                    </li>
+                    <f:param name="id" value="videoForum"/>
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageEnquiriesRights}">
+                    <li id="searchEnquiry">Inquiries</li>
+                    <f:param name="id" value="searchEnquiry"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveEnrollMemberRights}">
+                    <li id="enrollMember">Enroll PBers</li>
+                    <f:param name="id" value="enrollMember"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveBookSessionsRights}">
+                    <li id="manageSession">Book Sessions</li>
+                    <f:param name="id" value="manageSession"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageMemberRights}">
+                    <li id="searchMember">Manage PBers</li>
+                    <f:param name="id" value="searchMember"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageProgramsRights}">
+                    <li id="searchProgram">Manage Programs</li>
+                    <f:param name="id" value="searchProgram"/>                                   
+                </h:commandLink>                
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageUserRights}">
+                    <li id="searchUser">Manage Users</li>
+                    <f:param name="id" value="searchUser"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageRoleRights}">
+                    <li id="searchRole">Manage Roles</li>
+                    <f:param name="id" value="searchRole"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageInjuriesRights}">
+                    <li id="manageInjury">Manage Medical Conditions</li>
+                    <f:param name="id" value="manageInjury"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageMealPlanRights}">
+                    <li id="manageMealPlan">Manage Meal Plans</li>
+                    <f:param name="id" value="searchMealPlan"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageRecipesRights}">
+                    <li id="manageRecipe">Manage Recipes</li>
+                    <f:param name="id" value="searchRecipe"/>                                   
+                </h:commandLink>                            
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveUpdateInjury}">
+                    <li id="updateInjury">Update Medical Conditions</li>
+                    <f:param name="id" value="updateInjury"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageVideoCategory}">
+                    <li id="manageVideoCategory">Manage Video Categories</li>
+                    <f:param name="id" value="manageVideoCategory"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageVideo}">
+                    <li id="manageVideo">Manage Videos</li>
+                    <f:param name="id" value="manageVideo"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveTakeMeasurement}">
+                    <li id="takeMeasurement">Take Measurements</li>
+                    <f:param name="id" value="takeMeasurement"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveManageUnitRights}">
+                    <li id="manageUnit">Manage Unit</li>
+                    <f:param name="id" value="manageUnit"/>                                   
+                </h:commandLink>
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{userRightsDataBean.haveUserReportsRights}">
+                    <li id="manageReport">Reports</li>
+                    <f:param name="id" value="memberReport" />                       
+                    <f:setPropertyActionListener value="PBer Report" target="#{systemResultSessionUtil.selectedReportName}" />                    
+                    <f:setPropertyActionListener value="memberReport" target="#{systemResultSessionUtil.selectedReportId}"/>
+                </h:commandLink> 
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{!userRightsDataBean.haveUserReportsRights and userRightsDataBean.haveFinancialReportsRights}">
+                    <li id="manageReport">Reports</li>                    
+                    <f:param name="id" value="transactionReport"/>                       
+                    <f:setPropertyActionListener value="Transaction Report" target="#{systemResultSessionUtil.selectedReportName}" />   
+                </h:commandLink> 
+
+                <h:commandLink action="#{menuServiceBean.menuNavigate}" >
+                    <li id="myProfile">My Profile</li>
+                    <f:param name="id" value="myProfile"/>
+                </h:commandLink>               
+            </ul>
+            <script type="text/javascript">                       
+                if ('#{loginDataBean.isLoggedin}' == 'false') {
+                    location.href = '/login';
+                }
+                document.getElementById("pbstudio").setAttribute("class", "active");               
+            </script>
+        </h:form>        
+    </ui:composition>
+</html>
+

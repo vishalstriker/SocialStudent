@@ -1,0 +1,591 @@
+
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.0" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
+               http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
+    
+    <url-mapping id="login">
+        <pattern value="/" />
+        <view-id value="/pages/login.jsf" />
+    </url-mapping>
+      
+    <url-mapping id="loginpage">
+        <pattern value="/login" />
+        <view-id value="/pages/login.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="authentication">
+        <pattern value="/authentication" />
+        <view-id value="/pages/authentication.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="aboutus">
+        <pattern>/aboutus</pattern>
+        <view-id>/pages/aboutus.jsf</view-id>
+    </url-mapping>
+    <url-mapping id="user">
+        <pattern>/user</pattern>
+        <view-id>user.jsf</view-id>
+    </url-mapping>
+     <url-mapping id="jugal1">
+        <pattern>/jugal1</pattern>
+        <view-id>jugal1.jsf</view-id>
+    </url-mapping>
+     <url-mapping id="manan1">
+        <pattern>/manan1</pattern>
+        <view-id>manan1.jsf</view-id>
+    </url-mapping>
+    <url-mapping id="tapan">
+        <pattern>/tapan</pattern>
+        <view-id>tapan.jsf</view-id>
+    </url-mapping>
+    <url-mapping id="admin">
+        <pattern>/admin</pattern>
+        <view-id>admin.jsf</view-id>
+    </url-mapping>
+    <url-mapping id="contact">
+        <pattern>/contact</pattern>
+        <view-id>/pages/contact.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="wlc">
+        <pattern>/wlc</pattern>
+        <view-id>/pages/wlc.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="founder">
+        <pattern>/founder</pattern>
+        <view-id>/pages/founder.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancediet">
+        <pattern>/pbalancediet</pattern>
+        <view-id>/pages/pbalancediet.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancemealplan">
+        <pattern>/pbalancemealplan</pattern>
+        <view-id>/pages/pbalancemealplan.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalanceViewmealplan">
+        <pattern>/pbalanceViewmealplan</pattern>
+        <view-id>/pages/pbalanceViewmealplan.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancemealplanveg1200">
+        <pattern>/pbalancemealplanveg1200</pattern>
+        <view-id>/pages/pbalancemealplanveg1200.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancemealplanveg1600">
+        <pattern>/pbalancemealplanveg1600</pattern>
+        <view-id>/pages/pbalancemealplanveg1600.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancemealplannonveg1200">
+        <pattern>/pbalancemealplannonveg1200</pattern>
+        <view-id>/pages/pbalancemealplannonveg1200.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancemealplannonveg1600">
+        <pattern>/pbalancemealplannonveg1600</pattern>
+        <view-id>/pages/pbalancemealplannonveg1600.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="pbalancetraining">
+        <pattern>/pbalancetraining</pattern>
+        <view-id>/pages/pbalancetraining.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="schedule">
+        <pattern>/schedule</pattern>
+        <view-id>/pages/schedule.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="sitemap">
+        <pattern>/sitemap</pattern>
+        <view-id>/pages/sitemap.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="results">
+        <pattern>/results</pattern>
+        <view-id>/pages/testimonials.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="trainingstudio">
+        <pattern>/trainingstudio</pattern>
+        <view-id>/pages/trainingstudio.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="viewVideos">
+        <pattern>/viewVideos</pattern>
+        <view-id>/pages/videos.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="managePlaylists">
+        <pattern>/managePlaylists</pattern>
+        <view-id>/pages/managePlaylists.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="playlist">
+        <pattern>/playlist</pattern>
+        <view-id>/pages/playlist.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="questions">
+        <pattern>/questions</pattern>
+        <view-id>/pages/questions.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="videosintro">
+        <pattern>/videosintro</pattern>
+        <view-id>/pages/videosintro.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="logindemo">
+        <pattern>/logindemo</pattern>
+        <view-id>/pages/logindemo.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="videosstretching">
+        <pattern>/videosstretching</pattern>
+        <view-id>/pages/videosstretching.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="videoswarmup">
+        <pattern>/videoswarmup</pattern>
+        <view-id>/pages/videoswarmup.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="videosworkout">
+        <pattern>/videosworkout</pattern>
+        <view-id>/pages/videosworkout.jsf</view-id>
+    </url-mapping>
+    
+    <url-mapping id="videosother">
+        <pattern>/videosother</pattern>
+        <view-id>/pages/videosother.jsf</view-id>
+    </url-mapping>
+      
+    <url-mapping id="forgotPassword">
+        <pattern>/forgotPassword</pattern>
+        <view-id>/pages/forgotPassword.jsf</view-id>
+    </url-mapping>
+
+    <url-mapping id="registration">
+        <pattern>/registration</pattern>
+        <view-id>/pages/registration.jsf</view-id>
+    </url-mapping>
+
+    <url-mapping id="thankYou">
+        <pattern value="/thankYou" />
+        <view-id value="/pages/thankYouPage.jsf" />
+    </url-mapping>
+     
+    <url-mapping id="manageSuperAdminPage">
+        <pattern value="/manageSuperAdmin" />
+        <view-id value="/pages/superadmin/manageSuperAdmin.jsf" />
+    </url-mapping>
+      
+    <url-mapping id="manageAdminPage">
+        <pattern value="/manageAdmin" />
+        <view-id value="/pages/admin/manageAdmin.jsf" />
+    </url-mapping>
+
+    <url-mapping id="memberDashboard">
+        <pattern value="/memberDashboard" />
+        <view-id value="/pages/member/dashboard.jsf" />
+    </url-mapping>
+      
+    <url-mapping id="accessDeniedPage">
+        <pattern value="/accessDenied" />
+        <view-id value="/pages/accessDeniedPage.jsf" />
+    </url-mapping>
+      
+    <url-mapping id="manageSuperAdminPage">
+        <pattern value="/manageSystemConfiguration" />
+        <view-id value="/pages/superadmin/manageSystemConfiguration.jsf" />
+    </url-mapping>
+      
+    <url-mapping id="searchUser">
+        <pattern value="/searchUser" />
+        <view-id value="/pages/admin/searchUser.jsf" />
+    </url-mapping>
+    
+    <!-- program pages -->
+    <url-mapping id="createProgram">
+        <pattern value="/createProgram" />
+        <view-id value="/pages/admin/createProgram.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="searchProgram">
+        <pattern value="/searchProgram" />
+        <view-id value="/pages/admin/searchProgram.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="newProgram">
+        <pattern value="/newProgram" />
+        <view-id value="/pages/admin/newProgram.jsf" />
+    </url-mapping>
+
+    <url-mapping id="updateProgram">
+        <pattern value="/updateProgram" />
+        <view-id value="/pages/admin/updateProgram.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="createUser">
+        <pattern value="/createUser" />
+        <view-id value="/pages/admin/createUser.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="searchRole">
+        <pattern value="/searchRole" />
+        <view-id value="/pages/admin/searchRole.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="createRole">
+        <pattern value="/createRole" />
+        <view-id value="/pages/admin/createRole.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateRole">
+        <pattern value="/updateRole" />
+        <view-id value="/pages/admin/updateRole.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateUser">
+        <pattern value="/updateUser" />
+        <view-id value="/pages/admin/updateUser.jsf" />
+    </url-mapping>
+    
+    <!-- Manage Injuries -->
+    <url-mapping id="manageInjury">
+        <pattern value="/manageInjury" />
+        <view-id value="/pages/admin/manageInjury.jsf" />
+    </url-mapping>
+
+    <!-- Manage Enquiries -->
+    <url-mapping id="searchEnquiry">
+        <pattern value="/searchEnquiry" />
+        <view-id value="/pages/admin/searchEnquiry.jsf" />
+    </url-mapping>
+    
+      <!-- Create Enquiries -->
+    <url-mapping id="createEnquiry">
+        <pattern value="/createEnquiry" />
+        <view-id value="/pages/admin/createEnquiry.jsf" />
+    </url-mapping>
+    
+    <!-- Manage Members -->
+    <url-mapping id="enrollMember">
+        <pattern value="/enrollMember" />
+        <view-id value="/pages/admin/enrollMember.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="searchMember">
+        <pattern value="/searchMember" />
+        <view-id value="/pages/admin/searchMember.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateMember">
+        <pattern value="/updateMember" />
+        <view-id value="/pages/admin/updateMember.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateSubscription_smember">
+        <pattern value="/updateSubscription_smember" />
+        <view-id value="/pages/studiomember/updateSubscription.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateSubscription">
+        <pattern value="/updateSubscription" />
+        <view-id value="/pages/admin/updateSubscription.jsf" />
+    </url-mapping>
+    
+      <!-- Update Enquiries -->
+    <url-mapping id="updateEnquiry">
+        <pattern value="/updateEnquiry" />
+        <view-id value="/pages/admin/updateEnquiry.jsf" />
+    </url-mapping>
+
+    <url-mapping id="pbalanceRecipes">
+        <pattern value="/pbalanceRecipes" />
+        <view-id value="/pages/pbalanceRecipes.jsf" />
+    </url-mapping>
+
+    <url-mapping id="pbalanceRecipeDetail">
+        <pattern value="/pbalanceRecipeDetail" />
+        <view-id value="/pages/pbalanceRecipeDetail.jsf" />
+    </url-mapping>
+
+    
+      <!-- Manage Recipes -->
+    <url-mapping id="searchRecipe">
+        <pattern value="/searchRecipe" />
+        <view-id value="/pages/admin/searchRecipe.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="createRecipe">
+        <pattern value="/createRecipe" />
+        <view-id value="/pages/admin/createRecipe.jsf" />
+    </url-mapping>
+
+    <url-mapping id="viewRecipeDetails">
+        <pattern value="/viewRecipeDetails" />
+        <view-id value="/pages/admin/viewRecipeDetails.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateRecipe">
+        <pattern value="/updateRecipe" />
+        <view-id value="/pages/admin/updateRecipe.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="myProfile">
+        <pattern value="/myProfile" />
+        <view-id value="/pages/admin/myProfile.jsf" />
+    </url-mapping>
+
+    <url-mapping id="testimonial">
+        <pattern value="/testimonial" />
+        <view-id value="/pages/studiomember/testimonial.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateTestimonial">
+        <pattern value="/updateTestimonial" />
+        <view-id value="/pages/studiomember/updateTestimonial.jsf" />
+    </url-mapping>
+
+    <url-mapping id="createTestimonial">
+        <pattern value="/createTestimonial" />
+        <view-id value="/pages/studiomember/createTestimonial.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="manageTestimonial">
+        <pattern value="/manageTestimonial" />
+        <view-id value="/pages/admin/manageTestimonial.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="viewTestimonial">
+        <pattern value="/viewTestimonial" />
+        <view-id value="/pages/admin/viewTestimonial.jsf" />
+    </url-mapping>
+
+    <url-mapping id="myProfile_studioMember">
+        <pattern value="/myProfile_studioMember" />
+        <view-id value="/pages/studiomember/myProfile.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="memberProfile">
+        <pattern value="/memberProfile" />
+        <view-id value="/pages/member/memberProfile.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="memberReport">
+        <pattern value="/memberReport" />
+        <view-id value="/pages/admin/memberReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="leadListReport">
+        <pattern value="/leadListReport" />
+        <view-id value="/pages/admin/leadListReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="memberDetails">
+        <pattern value="/memberDetails" />
+        <view-id value="/pages/admin/memberDetails.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="memberDetailAccordingToSpecialist">
+        <pattern value="/memberDetailAccordingToSpecialist" />
+        <view-id value="/pages/admin/memberDetailAccordingToSpecialist.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="transactionReport">
+        <pattern value="/transactionReport" />
+        <view-id value="/pages/admin/transactionReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="outStandingFeesReport">
+        <pattern value="/outStandingFeesReport" />
+        <view-id value="/pages/admin/outStandingFeesReport.jsf" />
+    </url-mapping>
+
+    <url-mapping id="followUpReport">
+        <pattern value="/followUpReport" />
+        <view-id value="/pages/admin/followUpReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="pbSpecialistPerformanceReport">
+        <pattern value="/pbSpecialistPerformanceReport" />
+        <view-id value="/pages/admin/pbSpecialistPerformanceReport.jsf" />
+    </url-mapping>
+    
+      <!-- Manage Meal Plans -->
+    <url-mapping id="searchMealPlan">
+        <pattern value="/searchMealPlan" />
+        <view-id value="/pages/admin/searchMealPlan.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="createMealPlan">
+        <pattern value="/createMealPlan" />
+        <view-id value="/pages/admin/createMealPlan.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateMealPlan">
+        <pattern value="/updateMealPlan" />
+        <view-id value="/pages/admin/updateMealPlan.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="updateInjury">
+        <pattern value="/updateInjury" />
+        <view-id value="/pages/admin/updateInjury.jsf" />
+    </url-mapping>
+
+    <url-mapping id="createSlot">
+        <pattern value="/createSlot" />
+        <view-id value="/pages/admin/createSlot.jsf" />
+    </url-mapping>
+
+    <url-mapping id="manageShift">
+        <pattern value="/manageShift" />
+        <view-id value="/pages/admin/manageShift.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="manageHome">
+        <pattern value="/manageHome" />
+        <view-id value="/pages/admin/manageHome.jsf" />
+    </url-mapping>
+
+    <url-mapping id="createShift">
+        <pattern value="/createShift" />
+        <view-id value="/pages/admin/createShift.jsf" />
+    </url-mapping>
+
+    <url-mapping id="manageSession">
+        <pattern value="/manageSession" />
+        <view-id value="/pages/admin/manageSession.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="manageVideoCategory">
+        <pattern value="/manageVideoCategory" />
+        <view-id value="/pages/admin/manageVideoCategory.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="manageVideo">
+        <pattern value="/manageVideo" />
+        <view-id value="/pages/admin/manageVideo.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="videoForum">
+        <pattern value="/videoForum" />
+        <view-id value="/pages/admin/videoForum.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="addVideo">
+        <pattern value="/addVideo" />
+        <view-id value="/pages/admin/addVideo.jsf" />
+    </url-mapping>
+
+    <url-mapping id="updateVideo">
+        <pattern value="/updateVideo" />
+        <view-id value="/pages/admin/updateVideo.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="sessionSummaryReport">
+        <pattern value="/sessionSummaryReport" />
+        <view-id value="/pages/admin/sessionSummaryReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="memberAttendanceReport">
+        <pattern value="/memberAttendanceReport" />
+        <view-id value="/pages/admin/memberAttendanceReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="pbSpecialistSessionReport">
+        <pattern value="/pbSpecialistSessionReport" />
+        <view-id value="/pages/admin/pbSpecialistSessionReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="membershipDueReport">
+        <pattern value="/membershipDueReport" />
+        <view-id value="/pages/admin/membershipDueReport.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="membershipDueReportDetail">
+        <pattern value="/membershipDueReportDetail" />
+        <view-id value="/pages/admin/membershipDueReportDetail.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="measurementReport">
+        <pattern value="/measurementReport" />
+        <view-id value="/pages/admin/measurementReport.jsf" />
+    </url-mapping>
+
+    <url-mapping id="memberBookSession">
+        <pattern value="/memberBookSession" />
+        <view-id value="/pages/studiomember/memberBookSession.jsf" />
+    </url-mapping>
+
+    <url-mapping id="mySession">
+        <pattern value="/mySession" />
+        <view-id value="/pages/studiomember/mySession.jsf" />
+    </url-mapping>
+
+    <url-mapping id="uploadMemberProfilePicture">
+        <pattern value="/uploadMemberProfilePicture" />
+        <view-id value="/pages/studiomember/uploadProfilePicture.jsf" />
+    </url-mapping>
+
+    <url-mapping id="uploadAdminProfilePicture">
+        <pattern value="/uploadAdminProfilePicture" />
+        <view-id value="/pages/admin/uploadProfilePicture.jsf" />
+    </url-mapping>
+
+    <url-mapping id="currentSession">
+        <pattern value="/currentSession" />
+        <view-id value="/pages/admin/currentSession.jsf" />
+    </url-mapping>
+
+    <url-mapping id="takeMeasurement">
+        <pattern value="/takeMeasurement" />
+        <view-id value="/pages/admin/takeMeasurement.jsf" />
+    </url-mapping>
+
+    <url-mapping id="trainerRoster">
+        <pattern value="/trainerRoster" />
+        <view-id value="/pages/admin/trainerRoster.jsf" />
+    </url-mapping>
+
+    <url-mapping id="viewSchedule">
+        <pattern value="/viewSchedule" />
+        <view-id value="/pages/admin/mySchedule.jsf" />
+    </url-mapping>
+
+    <url-mapping id="otherSession">
+        <pattern value="/otherSession" />
+        <view-id value="/pages/admin/otherSession.jsf" />
+    </url-mapping>
+    
+    <url-mapping id="paypalNotification">
+        <pattern value="/paypalNotification" />
+        <view-id value="/pages/managePaypalReturn.jsf" />
+    </url-mapping>
+    
+    <!-- Manage Unit -->
+    <url-mapping id="manageUnit">
+        <pattern value="/manageUnit" />
+        <view-id value="/pages/admin/manageUnit.jsf" />
+    </url-mapping>
+
+    <url-mapping id="addSubscription">
+        <pattern value="/addSubscription" />
+        <view-id value="/pages/admin/addSubscription.jsf" />
+    </url-mapping>
+
+    <url-mapping id="todaysPBers">
+        <pattern value="/todaysPBers" />
+        <view-id value="/pages/admin/todaysPBers.jsf" />
+    </url-mapping>
+
+</pretty-config>

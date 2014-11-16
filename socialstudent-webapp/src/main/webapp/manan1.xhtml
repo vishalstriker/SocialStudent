@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>members</title>
+
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-1.8.2.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-ui-1.9.0.custom.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.core.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.widget.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.autocomplete.js"></script>
+        <f:event listener="#{usermainServicebean.retriveAllUsermain()}" type="preRenderView"/>
+
+        <ui:repeat value="#{usermainServicebean.usermainDatabeanlist}" var="a">
+            <script type="text/javascript">        
+      
+                $(document).ready(function() {
+                    //var txr = "{a}";
+                    var str =new Array().push("#{a}");
+                    //  alert(str);
+                    // alert(txr);
+                    $("#id1").closest("#div2").autocomplete({
+                        //str.push("{a}");
+                        //                alert("{a}"); 
+          
+                        source:str
+                    });
+
+                });
+            </script>
+        </ui:repeat>
+    </head>
+    <h:body>
+        <div>
+            <div id="div1" style="width:50%;float:left;">
+                <h:form>
+                    Group Name
+                    <h:dataTable   value="#{groupServiceBean.retriveAllGroup()}" var="user1">
+
+                        <h:column>
+                            <h:commandLink value="#{user1.groupname}" />
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+            <div id="div2" style="width:50%;margin-left:20%;border-left:solid 1px black;" >
+                <div id="div21">
+                    <f:event listener="#{statusServiceBean.retriveAllStatus()}" type="preRenderView"  />
+
+                    SEARCH : <h:inputText id="id1" />
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <h:form prependId="false">
+
+                    <h:inputTextarea value="#{statusDataBean.yourstatus}" label="whats in your mind" />
+
+                    <h:commandButton action="#{statusServiceBean.statusCreate()}" label="POST" value="POST"/>
+                    <h:dataTable   value="#{statusServiceBean.statusDataBeanList}" var="user1">
+                        <h:column>
+                            YOUR Status     :->  <h:outputText value="#{user1.yourstatus}" />
+
+
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+
+            <div id="div3" style="margin-left:90%;border-left:solid 1px black;float:right;">
+                <h:form>
+                    <h:commandLink action="jugal1.xhtml" value="Create Group"/>
+                    <br/>
+                    <h:commandLink action="user" value="Create Event"/>
+                </h:form>
+            </div>
+
+        </div>
+    </h:body>
+</html>

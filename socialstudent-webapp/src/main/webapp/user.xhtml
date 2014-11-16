@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>USERS</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-1.8.2.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-ui-1.9.0.custom.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.core.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.widget.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+//                var pickerOpts = {
+//                    showOtherMonths: true
+//                    dateFormat:"yy-mm-dd"
+//                    showButtonpanel:true
+// 
+//                };
+
+                $( ".date" ).datepicker({dateFormat:"yy-mm-dd",showButtonpanel:true,showOtherMonths:true});
+            });
+        </script>
+    </head>
+    <body>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Event Title:</td>
+                    <td> <h:inputText  required="true" value="#{eventDataBean.eventTitle}"/> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>Details:</td>
+                    <td> <h:inputTextarea value="#{eventDataBean.eventDetails}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Location:</td>
+                    <td> <h:inputText label="Add location" value="#{eventDataBean.eventPlace}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>From:</td>
+                    <td> <h:inputText class="date" value="#{eventDataBean.startingdate}"/> <h:selectOneListbox size="1" id="time" value="#{eventDataBean.staringtime}">
+                            <f:selectItem itemValue="12.00"/>
+                            <f:selectItem itemValue="12.30"/>
+                            <f:selectItem itemValue="1.00"/>
+                            <f:selectItem itemValue="1.30"/>
+                            <f:selectItem itemValue="2.00"/>
+                            <f:selectItem itemValue="2.30"/>
+                            <f:selectItem itemValue="3.00"/>
+                            <f:selectItem itemValue="3.30"/>
+                            <f:selectItem itemValue="4.00"/>
+                            <f:selectItem itemValue="4.30"/>
+                            <f:selectItem itemValue="5.00"/>
+                            <f:selectItem itemValue="5.30"/>
+                            <f:selectItem itemValue="6.00"/>
+                            <f:selectItem itemValue="6.30"/>
+                            <f:selectItem itemValue="7.00"/>
+                            <f:selectItem itemValue="7.30"/>
+                            <f:selectItem itemValue="8.00"/>
+                            <f:selectItem itemValue="8.30"/>
+                            <f:selectItem itemValue="9.00"/>
+                            <f:selectItem itemValue="10.00"/>
+                            <f:selectItem itemValue="10.30"/>
+                            <f:selectItem itemValue="11.00"/>
+                            <f:selectItem itemValue="11.30"/>
+                        </h:selectOneListbox>
+                        <h:selectOneListbox size="1">
+                            <f:selectItem itemValue="am"/>
+                            <f:selectItem itemValue="pm"/>
+                        </h:selectOneListbox>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> To: </td>
+                    <td> <h:inputText label="end date" class="date" value="#{eventDataBean.endingdate}"/><h:selectOneListbox size="1" value="#{eventDataBean.endingtime}">
+                            <f:selectItem itemValue="12.00"/>
+                            <f:selectItem itemValue="12.30"/>
+                            <f:selectItem itemValue="1.00"/>
+                            <f:selectItem itemValue="1.30"/>
+                            <f:selectItem itemValue="2.00"/>
+                            <f:selectItem itemValue="2.30"/>
+                            <f:selectItem itemValue="3.00"/>
+                            <f:selectItem itemValue="3.30"/>
+                            <f:selectItem itemValue="4.00"/>
+                            <f:selectItem itemValue="4.30"/>
+                            <f:selectItem itemValue="5.00"/>
+                            <f:selectItem itemValue="5.30"/>
+                            <f:selectItem itemValue="6.00"/>
+                            <f:selectItem itemValue="6.30"/>
+                            <f:selectItem itemValue="7.00"/>
+                            <f:selectItem itemValue="7.30"/>
+                            <f:selectItem itemValue="8.00"/>
+                            <f:selectItem itemValue="8.30"/>
+                            <f:selectItem itemValue="9.00"/>
+                            <f:selectItem itemValue="10.00"/>
+                            <f:selectItem itemValue="10.30"/>
+                            <f:selectItem itemValue="11.00"/>
+                            <f:selectItem itemValue="11.30"/>
+                        </h:selectOneListbox>
+                        <h:selectOneListbox size="1">
+                            <f:selectItem itemValue="am"/>
+                            <f:selectItem itemValue="pm"/>
+                        </h:selectOneListbox> 
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:commandButton value="Create" action="#{eventServiceBean.createEvent()}"/></td>
+                </tr>
+            </table>
+        </h:form>
+        <!--         <h:form>
+                     <h:dataTable value="{userServiceBean.retrieveUserDataBeanList()}" var="user">
+                         <h:column>
+                             {user.firstname}
+                             <f:setPropertyActionListener/>
+                        </h:column>
+                         <h:column>
+                             <h:commandButton valu="add users" /> 
+                         </h:column>
+                    </h:dataTable>
+                </h:form>-->
+    </body>
+</html>

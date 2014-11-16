@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+    <h:body>
+        <f:metadata>
+            <f:event listener="#{loginServiceBean.checkCookie()}" type="preRenderView"/>
+            <f:event listener="#{userServiceBean.initContactus()}" type="preRenderView"/>
+        </f:metadata>
+        <ui:composition template="./layout/homeLayout.xhtml">
+            <ui:define name="content">
+                <h:form id="manageRegistration" prependId="false">
+                    <div class="popupContact" style=" width:480px; " id="regdiv">
+
+                        <div class="login-header">
+                            Registration
+                            <div class="popupContactClose"></div>
+                        </div>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="form-table" >
+                            <tr>
+                                <td colspan="2" style="text-align:center; font-weight:bold;"><br/><span>Fill out this simple form to Register </span><br/> 
+                                    <span style="font-size:18px;"> It's absolutely<span style="color:#CC0000; font-weight:bold;"> FREE! </span></span><br/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ui:include src="common/message.xhtml" />                                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="30%"><h:outputLabel value="Username"/><sup><font color="red">*</font></sup></th>
+                                <td>
+                                    <a4j:region>
+                                        <h:inputText style="width: 85%;" styleClass="medium" value="#{usersDataBean.userId}" id="UserId" required="true" requiredMessage="Enter username" maxlength="30" onkeyup="convertToLowerCase(this.id,event);" onchange="convertToLowerCase(this.id,event);">
+                                            <f:ajax event="blur" render="useridMsg check" listener="#{userServiceBean.isUserExist()}" />
+                                        </h:inputText>
+                                    </a4j:region>
+                                    <h:outputLabel id="check" style="color: #{userServiceBean.isUserExistFlag ? 'green' : 'red'};display: #{userServiceBean.isUserAvailable != null and not empty userServiceBean ? 'inline' : 'none'};">
+                                        <br/>#{userServiceBean.isUserAvailable}
+                                    </h:outputLabel>
+                                    <br/>
+                                    <h:message for="UserId" style="color: red" id="useridMsg" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><h:outputLabel value="First Name"/><sup><font color="red">*</font></sup></th>
+                                <td><h:inputText style="width: 85%;" styleClass="medium"  value="#{usersDataBean.firstName}" id="FirstName" maxlength="50" required="true" requiredMessage="Enter first name">
+                                        <f:ajax event="blur" render="firstnameMsg" />
+                                    </h:inputText>
+                                    <br/>
+                                    <h:message for="FirstName" style="color: red" id="firstnameMsg" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><h:outputLabel value="Last Name"/><sup><font color="red">*</font></sup></th>
+                                <td><h:inputText id="LastName" style="width: 85%;" styleClass="medium"  value="#{usersDataBean.lastName}" maxlength="50" required="true" requiredMessage="Enter last name">
+                                        <f:ajax event="blur" render="lastnameMsg" />
+                                    </h:inputText>
+                                    <br/>
+                                    <h:message for="LastName" style="color: red" id="lastnameMsg" />                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><h:outputLabel value="Password"/><sup><font color="red">*</font></sup></th>
+                                <td>
+                                    <h:inputSecret style="width: 85%" styleClass="medium"  value="#{usersDataBean.password}" id="password" maxlength="16" required="true" requiredMessage="Enter password" onkeyup="testPassword(this.value);">
+                                        <f:ajax event="blur" render="pwdMsg" />
+                                    </h:inputSecret>
+                                    <br/>
+                                    <h:message for="password" style="color: red" id="pwdMsg" />
+                                </td>
+                                <!--                                <td valign='top' colspan="2">
+                                                                    <a id='Words'></a>
+                                                                </td>-->
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><h:outputText style="color: grey; width: 85%" value="Password must be at least 8 characters long. Alphabets and numbers are allowed." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><h:outputLabel value="Confirm Password"/><sup><font color="red">*</font></sup></th>
+                                <td>
+                                    <h:inputSecret style="width: 85%" styleClass="medium"  value="#{usersDataBean.rePassword}" id="rePassword" maxlength="16" required="true" requiredMessage="Enter confirm password">
+                                        <f:ajax event="blur" render="cpwdMsg" />
+                                    </h:inputSecret>
+                                    <br/>
+                                    <h:message for="rePassword" style="color: red" id="cpwdMsg" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><h:outputLabel value="Email address"/><sup><font color="red">*</font></sup></th>
+                                <td><h:inputText style="width: 85%;" styleClass="medium"  value="#{usersDataBean.email}" id="EmailAddress" required="true" requiredMessage="Enter email address"  onkeypress="if(!callMethod()){return false;}" maxlength="50">
+                                        <f:ajax event="blur" render="emailMsg" />
+                                    </h:inputText>
+                                    <br/>
+                                    <h:message for="EmailAddress" style="color: red" id="emailMsg" />                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>How did you hear about us ?</th>
+                                <td>
+                                    <h:inputHidden value="#{contactusDataBean.source}" id="cntSrc" />
+                                    <h:selectOneMenu value="#{systemResultViewUtil.city}" style="width: 180px" id="contactSrc">
+                                        <f:selectItems value="#{userServiceBean.contactUsSource}" />
+                                        <a4j:ajax event="change" render="srcTxt" oncomplete="document.getElementById('cntSrc').value = document.getElementById('contactSrc').value;('#{systemResultViewUtil.city == 'FR' or systemResultViewUtil.city == 'NE' or systemResultViewUtil.city == 'PP'}' == 'true') ? document.getElementById('srcTxtTr').style.display = '' : document.getElementById('srcTxtTr').style.display = 'none'"/>
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr id="srcTxtTr" style="display: ('#{systemResultViewUtil.city == 'FR' or systemResultViewUtil.city == 'NE' or systemResultViewUtil.city == 'PP'}' == 'true') ? '' : 'none'">
+                                <th></th>
+                                <td>
+                                    <h:outputLabel id="srcTxt">
+                                        <h:inputText styleClass="small" style="width: 180px;" maxlength="50" value="#{contactusDataBean.otherSource}" rendered="#{systemResultViewUtil.city == 'FR' or systemResultViewUtil.city == 'NE' or systemResultViewUtil.city == 'PP'}" />
+                                    </h:outputLabel>
+                                </td>
+                            </tr>
+                            <script type="text/javascript">
+                                    if ('#{systemResultViewUtil.city == 'FR' or systemResultViewUtil.city == 'NE' or systemResultViewUtil.city == 'PP'}' == 'true') {
+                                        document.getElementById('srcTxtTr').style.display = '';
+                                    } else {
+                                        document.getElementById('srcTxtTr').style.display = 'none';
+                                    }
+                            </script>
+                            <tr>
+                                <th style="vertical-align: top;"><h:outputText value="Word Verification"/><sup><font color="red">*</font></sup></th>
+                                <td>
+                                    <h:graphicImage id="captchaImage" value="/jcaptcha_image" height="50" width="270" style="border:1px solid;border-color: #c11b1d;background-color: white;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+
+                                    <h:inputText style="width: 85%;" styleClass="medium" id="captcha" value="#{usersDataBean.captchaResponse}" validator="#{captchaValidatorBean.validateCaptcha}" required="true" requiredMessage="Enter verification code">
+                                    </h:inputText>
+                                    <br/>
+                                    <h:message for="captcha" style="color: red" id="captMsg" />
+                                    <script type="text/javascript">
+                                        document.getElementById('captcha').value= "";
+                                    </script>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>&#160;</th>
+                                <th>
+                                    <h:commandButton styleClass="letsgo-btn" id="registration" onclick="loadWaitPanel('regdiv');" action="#{userServiceBean.registerUser}" />
+                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                </th>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="backgroundPopup"></div>
+                </h:form>
+                <h:form>
+                    <div class="flash-banner" id="flashContentDiv">
+                        <script type="text/javascript">
+                            AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','970','height','415','title','pbalance','src','pbalance-slide-show_v6','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','wmode','transparent','movie','#{facesContext.externalContext.requestContextPath}/images/pbalance-slide-show_v6' ); //end AC code
+                        </script>
+                        <noscript>
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="970" height="445" title="pbalance">
+                                <param name="movie" value="pbalance-slide-show_v6.swf" />
+                                <param name="quality" value="high" />
+                                <param name="wmode" value="transparent" />
+                                <embed src="#{facesContext.externalContext.requestContextPath}/images/pbalance-slide-show_v6.swf" width="970" height="445" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" wmode="transparent"></embed>
+                            </object>
+                        </noscript>                    
+                    </div>
+                    <div class="flash-banner" id="flashDiv" style="display:none;">
+                        <img src="#{facesContext.externalContext.requestContextPath}/images/alternate-image-flash.jpg" />
+                    </div>  
+                    <hr style="margin-bottom:15px;"/>                    
+                    <a class="youtube" href="#" rel="uNxQcWrI8p8" title="Welcome to the perfect balance guidance videos">  <div class="video-box">
+                            <div class="inner-video">
+                                <div class="inner-videobg">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td colspan="2"><h2>Latest Video</h2></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="46%"><img src="#{facesContext.externalContext.requestContextPath}/images/warmup-video.png" alt="introduction-video" width="127" height="110" /></td>
+                                            <td width="54%" valign="top">
+                                                <p>Micheal talks about the Perfect Balance weight loss challenge and the video series                        </p>  </td>
+                                        </tr>
+                                    </table>
+                                </div>	
+                            </div>           
+                        </div>
+                    </a>
+                    <h:commandLink action="#{menuServiceBean.menuNavigate}">     
+                        <f:param name="id" value="wlc"/>   
+                        <div class="video-box">
+                            <div class="inner-video">
+                                <div class="inner-videobg">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td colspan="2"><h2>PB Weight Loss Contest</h2></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align:justify;"><h6 style="text-align:center; font-weight:600; margin-bottom:0px;">WIN $2000</h6>
+                                                Perfect Balance invites you to a weight loss challenge unlike any you’ve ever seen! Open to all... </td>                                   </tr>
+
+                                        <tr>
+                                            <td colspan="2" style="text-align:center; padding-top:5px;">                                             
+                                                <div id="joinnow-btn" style="margin:0 auto;" />                                                                                                                                                                                                                     
+                                            </td>
+                                        </tr>
+                                    </table>                                 
+                                </div>	
+                            </div>
+                        </div>
+                    </h:commandLink> 
+                    <div class="video-box01"  >
+                        <div class="inner-video01" >
+                            <div class="inner-videobg01" >
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="form-table">
+                                    <tr>
+                                        <td colspan="2" style="padding:0px;"><h2>Weight Loss Calculator</h2></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Your starting Weight</th>
+                                        <td  valign="top">
+                                            <input type="text" maxlength="3" name="textSWeight" id="textSWeight" class="small" />              </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Your current Weight</th>
+                                        <td valign="top"><input type="text" maxlength="3" name="textCWeight" id="textCWeight" class="small" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total weight lost</th>
+                                        <td valign="bottom"><label id="labelWLost" name="labelWLost" style="font-weight: bold;">0 %</label></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&#160;</th>
+                                        <td valign="top">
+                                            <a  onclick="calculatewlc();return false;" ><div id="calculate">&#160;</div></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>	
+                        </div>
+                    </div>
+                </h:form>                
+                <script type="text/javascript">
+                    loadPopup();                  
+                    jQuery("#textSWeight").numeric();
+                    jQuery("#textCWeight").numeric();
+                    document.getElementById('UserId').focus();     
+                                  
+                    //CONTROLLING EVENTS IN jQuery
+                    $(document).ready(function(){                                                                                                
+                        //CLOSING POPUP
+                        //Click the x event!
+                        $(".popupContactClose").click(function(){
+                            disablePopup();  
+//                            location.href='#{facesContext.externalContext.requestContextPath}/login'
+                        });
+                        $(".popupContactClosebutton").click(function(){
+                            disablePopup();
+//                            location.href='#{facesContext.externalContext.requestContextPath}/login'
+                        });                                                                                              
+                    });
+                    if(swfobject.hasFlashPlayerVersion("1")) {
+                        document.getElementById('flashContentDiv').style.display='block';
+                        document.getElementById('flashDiv').style.display='none';
+                    }
+                    else {
+                        document.getElementById('flashDiv').style.display='block';
+                        document.getElementById('flashContentDiv').style.display='none';
+
+                    }
+                </script>
+            </ui:define>
+        </ui:composition>
+    </h:body>       
+</html>
+

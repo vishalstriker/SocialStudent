@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition>
+        <h:form>
+        <table width="980" border="0" cellspacing="0" cellpadding="0" style="margin:5px auto;">
+            <tr>
+                <td width="327">&copy;2012 Social Student</td>
+                <td width="421">CALL US - +91 9714738589 | 
+                    <h:commandLink value="CONTACT US" action="#{menuServiceBean.menuNavigate}">                                   
+                         <f:param name="id" value="contact"/>                                   
+                    </h:commandLink> |
+                    <h:commandLink value="SITEMAP" action="#{menuServiceBean.menuNavigate}">                                   
+                         <f:param name="id" value="sitemap"/>                                   
+                    </h:commandLink> </td>
+                <td width="232" align="right">&#160;</td>
+            </tr>
+        </table>
+        </h:form>
+    </ui:composition>
+</html>
+

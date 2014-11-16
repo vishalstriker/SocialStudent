@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <ui:composition>
+        <h:form>                  
+            <div class="login">   
+                <noscript>
+                    <div class="ui-widget" style="text-align: left;">
+                        <div class="ui-state-error ui-corner-all" style="padding:0px 5px; margin-bottom:10px; font-weight:bold; line-height:16px; "> 
+                            <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+                                <h:outputText value=" Javascript is disabled in your browser. Please
+                                              enable javascript from your browser settings to get Social Student
+                                              functioning." escape="false"/></p><div class="clearing"></div>
+                        </div>                
+                    </div>                      
+                </noscript>
+                <h:outputLabel rendered="#{!loginDataBean.isLoggedin}">
+                    <h:commandLink styleClass="login_btn" style="color:white" id="button" value="Login" action="#{menuServiceBean.loginNavigate}">                                                            
+                        <f:param name="id" value=""/>
+                    </h:commandLink> 
+                    <a href="/registration" style="color:white" class="login_btn">Register</a>                    
+                </h:outputLabel>                
+                <h:outputLabel rendered="#{loginDataBean.isLoggedin}">
+                    <h:outputLabel rendered="#{loginDataBean.role == 'ROLE_SADMIN'}">
+                        Hello! <h:outputText value="#{loginDataBean.name}" />       
+                    </h:outputLabel>
+                    &#160;              
+                    <h:commandLink title="Logout" style="color:white" styleClass="login_btn" value="Logout" action="#{loginServiceBean.doLogout}" /> 
+                </h:outputLabel> 
+            </div>
+            <div id="navigation">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="1%"><img src="#{facesContext.externalContext.requestContextPath}/images/nav-left.png" alt="nav-left" width="5" height="43" /></td>
+                        <td width="26%" valign="top"><a href="/login"><img src="#{facesContext.externalContext.requestContextPath}/images/perfect-balance-logo.png" alt="perfectbalance" width="253" height="40"  /></a> </td>
+                        <td width="72%" valign="top" > <ul id="global-nav">
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}">
+                                    <li id="aboutus" >About Us</li>
+                                    <f:param name="id" value="aboutus"/>                                   
+                                </h:commandLink>   
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}">
+                                    <li id="trainingstudio" >Jugal</li>
+                                    <f:param name="id" value="jugal1"/>                                   
+                                </h:commandLink>                               
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}">
+                                    <li id="pbalancediet" >Manan</li>
+                                    <f:param name="id" value="manan1"/>                                   
+                                </h:commandLink>                                       
+                                <h:commandLink action="#{menuServiceBean.loginNavigate}">
+                                    <li id="videos">Tapan</li>
+                                    <f:param name="id" value="tapan"/>                                   
+                                </h:commandLink> 
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}">
+                                    <li id="results" >Menu4</li>
+                                    <f:param name="id" value="results"/>                                   
+                                </h:commandLink>
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}">
+                                    <li id="schedule" >Menu5</li>
+                                    <f:param name="id" value="schedule"/>                                   
+                                </h:commandLink>
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}">
+                                    <li id="contact" >Contact</li>
+                                    <f:param name="id" value="contact"/>                                   
+                                </h:commandLink>    
+                                <h:commandLink action="#{menuServiceBean.menuNavigate}" rendered="#{loginDataBean.isLoggedin and loginDataBean.role != 'ROLE_MEMBER'}">
+                                    <li id="pbstudio" >Social</li>
+                                    <f:param name="id" value="pbstudio"/>                                   
+                                </h:commandLink> 
+                            </ul>  </td>
+                        <td width="1%"><div align="right"><img src="#{facesContext.externalContext.requestContextPath}/images/nav-right.png" alt="nav-right" width="5" height="43" /></div></td>
+                    </tr>
+                </table>
+            </div>
+            <script type="text/javascript">
+                if(document.getElementById("#{loginDataBean.loginMenuId}")) {
+                    document.getElementById("#{loginDataBean.loginMenuId}").setAttribute("class", "active");
+                }
+            </script>            
+        </h:form>        
+    </ui:composition>
+</html>
+

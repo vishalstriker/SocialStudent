@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>Edit from</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+         <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-latest.pack.js"></script>
+         <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-1.8.2.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery-ui-1.9.0.custom.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.core.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.widget.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.accordion.js"></script>
+         <script src="#{facesContext.externalContext.requestContextPath}/scripts/jquery/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#accordion").accordion({ icons: { "header": "ui-icon-plus", "headerSelected": "ui-icon-minus"} });
+                var icons = $( "#accordion" ).accordion( "option", "icons" );
+ 
+//// setter
+$( "#accordion" ).accordion( "option", "icons", { "header": "ui-icon-plus", "headerSelected": "ui-icon-minus" } );
+                $('.accordion .head').click(function() {
+		$(this).next().toggle();
+		return false;
+	}).next().hide();
+        $( "#date" ).datepicker({dateFormat:"yy-mm-dd",showButtonpanel:true,showOtherMonths:true,defaultDate: '-22y -1m -18d'});
+        var defaultDate = $( ".selector" ).datepicker( "option", "defaultDate" );
+ 
+// setter
+$( ".selector" ).datepicker( "option", "defaultDate", '-22y -1m -18d' );
+            });
+                    </script>
+    </head>
+    <body>
+        <h:form prependId="false">
+        <div id="accordion">
+            <h3><a href="#">General</a></h3>
+            <div>
+                <div id="div1" style="">
+                    <div id="div11">
+                        address <br>
+                            <h:inputTextarea style="width: 352px;border-color: #000" value="#{editProfileDataBean.adress}"></h:inputTextarea></br></div>
+                    <div id="div21">
+                        state:<h:inputText style="width: 70px;border-color: #000" value="#{editProfileDataBean.state}"></h:inputText> postal code:<h:inputText style="width: 70px;border-color: #000" maxlength="6"></h:inputText>
+                    </div>
+                    <div id="31">
+                        Relationship status <br>
+                            <h:selectOneListbox  style="width: 127px;border-color: #000" size="0" value="#{editProfileDataBean.relationshipStatus}">
+                                <f:selectItem itemValue="single"></f:selectItem>
+                                <f:selectItem itemValue="commited"></f:selectItem>
+                                <f:selectItem itemValue="married"></f:selectItem>
+                                <f:selectItem itemValue="open marraige"></f:selectItem>
+                                <f:selectItem itemValue="open relationship"></f:selectItem>
+                            </h:selectOneListbox></br>
+                        DateOfBirth <br>
+                            <h:inputText id="date" style="width: 90px;border-color: #000" value="#{editProfileDataBean.dateofbirth}"></h:inputText></br>
+                        gender <br>
+                            <h:selectOneRadio value="#{editProfileDataBean.gender}">
+                                <f:selectItem itemValue="Male" itemLabel="male"></f:selectItem>
+                                <f:selectItem itemValue="Female" itemLabel="female"></f:selectItem>
+                            </h:selectOneRadio></br>
+                    </div>
+                    
+                    <div id="div2" style="width: 20%;margin-left: 50%;float: left;vertical-align: top">
+                        <div id="div12" style="display: inline-block;vertical-align: top">
+                        contact Information <br>
+                            mobile<h:inputText label="mobile" style="width: 183px;border-color: #000" maxlength="10" value="#{editProfileDataBean.mobileNo}"></h:inputText></br>
+                            Work<br><h:inputText label="Home" style="width: 183px;border-color: #000" maxlength="11" value="#{editProfileDataBean.homeNo}"></h:inputText>
+                            </br>
+                        </div>
+                        </div>
+                </div>
+                
+            </div>
+            <h3><a href="#">Location</a></h3>
+             <div>
+<!--                 <div id="4">
+                 city <br>
+                     <h:inputText style="width: 500px;border-color: #000"></h:inputText></br>
+                 </div>
+                 <div id="4" style="inline-box-align: last;margin-left: 50%;vertical-align: top">
+                     country<br>
+                         <h:inputText style="width:500px;border-color: #000"></h:inputText></br>
+                 </div>-->
+                    <table>
+                        <tr>
+                            <td> city</td>
+                            <td><td> country </td></td>
+                            </tr>
+                        <tr>
+                            <td>
+                                <h:inputText style="width: 500px;border-color: #000" value="#{editProfileDataBean.city}"></h:inputText>
+                            </td>
+                            <td><td>
+                                    <h:inputText style="width: 500px;border-color: #000" value="#{editProfileDataBean.country}"></h:inputText>
+                            </td></td>
+                        </tr>
+                    </table>
+             </div>
+            <h3><a href="#">Professional</a></h3>
+              <div>
+                  <table>
+                      
+                  <div>
+                      <tr>
+                          <td>
+                              education</td>
+                          <td><td><td><td>
+                              company</td></td></td></td>
+                          </tr>
+                      <tr>
+                          <td>
+                              <h:selectOneListbox size="1" style="width: 250px;border-color: #000" value="#{editProfileDataBean.education}">
+                          <f:selectItem itemValue="no answer"></f:selectItem>
+                          <f:selectItem itemValue="high school"></f:selectItem>
+                          <f:selectItem itemValue="Bachelor's Degree"></f:selectItem>
+                          <f:selectItem itemValue="Master Degree"></f:selectItem>
+                          <f:selectItem itemValue="ph.D"></f:selectItem>
+                      </h:selectOneListbox></td>
+                          <td><td><td><td>
+                                          <h:inputText style="width: 358px;border-color: #000" value="#{editProfileDataBean.company}"></h:inputText>
+
+                                  </td></td></td></td>
+                      </tr>
+                      <tr>
+                          <td>
+                      High School(name)</td>
+                          <td><td><td><td>
+                              Work email
+                              </td></td></td></td>
+                          </tr>
+                      <tr>
+                          <td>
+                              <h:inputText style="width: 354px;border-color: #000" value="#{editProfileDataBean.highSchool}"></h:inputText>
+                          </td>
+                          <td><td><td><td>
+                                          <h:inputText style="width: 358px;border-color: #000" value="#{editProfileDataBean.workEmail}"></h:inputText>
+                          </td></td></td></td>
+                          </tr>
+                      <tr>
+                          <td>
+                              College/University</td></tr>
+                      <tr>
+                          <td>
+                              <h:inputText style="width: 354px;border-color: #000" value="#{editProfileDataBean.collegeName}"></h:inputText>
+                      </td>
+                          </tr>
+                      <tr>
+                          <td>
+                              <h:commandLink id="link" style="color: #3875d7" target="#show"> Add more school
+                                  <!--<f:ajax event="onclick" render="show"/>-->
+                              </h:commandLink>
+                          </td>
+                          </tr>
+                      </div>
+                  </table>
+                      <div id="show" style="display: none">
+<!--                      <tr>
+                          <td>-->
+                              College/University
+<!--                      </td></tr>
+                      <tr>
+                          <td>-->
+<h:inputText style="width: 354px;border-color: #000" value="#{editProfileDataBean.collegeName2}"></h:inputText>
+<!--                      </td>
+                          </tr>-->
+
+                      </div>
+                      <script>
+                          $("#link").click(function () {
+  $("#show").show();
+});
+                      </script>
+                              
+<!--                      <div style="margin-left: 50%;vertical-align: top">
+                          company <br>
+                              <h:inputText style="width: 358px;border-color: #000"></h:inputText></br>
+                              Work email<br>
+                                  <h:inputText style="width: 358px;border-color: #000"></h:inputText></br>
+                              
+                      </div>-->
+<!--                  </div>-->
+<!--                      </table>-->
+              </div>
+             <h3><a href="#">Perosnal</a></h3>
+             <div>
+                 <table>
+                     <tr>
+                         <td>
+                             eye color
+                         </td>
+                         </tr>
+                     <tr>
+                         <td>
+                             <h:selectOneListbox style="width: 250px;border-color: #000" size="1" value="#{editProfileDataBean.eyeColor}">
+                                 <f:selectItem itemValue="no answer"></f:selectItem>
+                                 <f:selectItem itemValue="black"></f:selectItem>
+                          <f:selectItem itemValue="blue"></f:selectItem>
+                          <f:selectItem itemValue="brown"></f:selectItem>
+                          <f:selectItem itemValue="green"></f:selectItem>
+                          <f:selectItem itemValue="gray"></f:selectItem>
+                          <f:selectItem itemValue="hazel"></f:selectItem>
+                             </h:selectOneListbox>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             hair color
+                         </td>
+                         </tr>
+                     <tr>
+                         <td>
+                             <h:selectOneListbox style="width: 250px;border-color: #000" size="1" value="#{editProfileDataBean.hairColor}">
+                                 <f:selectItem itemValue="no answer"></f:selectItem>
+                                 <f:selectItem itemValue="black"></f:selectItem>
+                          <f:selectItem itemValue="blonde"></f:selectItem>
+                          <f:selectItem itemValue="light brown"></f:selectItem>
+                          <f:selectItem itemValue="dark brown"></f:selectItem>
+                          <f:selectItem itemValue="gray"></f:selectItem>
+                          <f:selectItem itemValue="changes often"></f:selectItem>
+                          <f:selectItem itemValue="other"></f:selectItem>
+                             </h:selectOneListbox>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             build
+                         </td>
+                         </tr>
+                     <tr>
+                         <td>
+                             <h:selectOneListbox style="width: 250px;border-color: #000" size="1" value="#{editProfileDataBean.build}">
+                                 <f:selectItem itemValue="no answer"></f:selectItem>
+                                 <f:selectItem itemValue="slim"></f:selectItem>
+                          <f:selectItem itemValue="athletic"></f:selectItem>
+                          <f:selectItem itemValue="above average"></f:selectItem>
+                          <f:selectItem itemValue="few extra pounds"></f:selectItem>
+                          <f:selectItem itemValue="large"></f:selectItem>
+<!--                          <f:selectItem itemValue="changes often"></f:selectItem>
+                          <f:selectItem itemValue="other"></f:selectItem>-->
+                             </h:selectOneListbox>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             looks
+                         </td>
+                         </tr>
+                     <tr>
+                         <td>
+                             <h:selectOneListbox style="width: 250px;border-color: #000" size="1" value="#{editProfileDataBean.looks}">
+                                 <f:selectItem itemValue="no answer"></f:selectItem>
+                                 <f:selectItem itemValue="beauty contest winner"></f:selectItem>
+                          <f:selectItem itemValue="very attractive"></f:selectItem>
+                          <f:selectItem itemValue="attractive"></f:selectItem>
+                          <f:selectItem itemValue="average"></f:selectItem>
+                          <f:selectItem itemValue="mirror cracking material"></f:selectItem>
+<!--                          <f:selectItem itemValue="changes often"></f:selectItem>
+                          <f:selectItem itemValue="other"></f:selectItem>-->
+                             </h:selectOneListbox>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             best feature
+                         </td>
+                         </tr>
+                     <tr>
+                         <td>
+                             <h:selectOneListbox style="width: 250px;border-color: #000" size="1" value="#{editProfileDataBean.bestFeatures}">
+                                 <f:selectItem itemValue="no answer"></f:selectItem>
+                                 <f:selectItem itemValue="eyes"></f:selectItem>
+                          <f:selectItem itemValue="hair"></f:selectItem>
+                          <f:selectItem itemValue="hand"></f:selectItem>
+                          <f:selectItem itemValue="legs"></f:selectItem>
+                          <f:selectItem itemValue="lips"></f:selectItem>
+                          <f:selectItem itemValue="chest"></f:selectItem>
+                          <f:selectItem itemValue="butts"></f:selectItem>
+                          <f:selectItem itemValue="calves"></f:selectItem>
+                          <f:selectItem itemValue="feet"></f:selectItem>
+                          <f:selectItem itemValue="not on the list"></f:selectItem>
+                             </h:selectOneListbox>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             About your's
+                             </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <h:inputTextarea style="width: 500px;border-color: #000" value="#{editProfileDataBean.about}"></h:inputTextarea>
+                             </td>
+                     </tr>
+                     
+                 </table>
+             </div>
+            
+           </div>
+            <div>
+                   <table>
+                       <tr>
+                           <td>
+                   <h:commandButton value="Save" action="#{editProfileServiceBean.createEditProfile()}"></h:commandButton></td>
+                   <td>
+            <h:commandButton value="Cancel" type="reset"/></td>
+            </tr>
+            </table>
+            </div>
+        </h:form>
+    </body>
+</html>
